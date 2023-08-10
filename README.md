@@ -1,4 +1,7 @@
 # Sort and Drop
+
+![Sort and Drop preview](sad-preview.gif)
+
 ## Description
 "Sort and Drop" is a small project to made a light class for making sortable list with sortable, droppable, selectable items, compatible in desktop and mobile (toushcreen), made in pure Javascript.
 
@@ -90,4 +93,5 @@ The class have a debug mode to see what's happening in real time. To enable it, 
 ```js
 SortAndDrop.debug = true;
 ```
-That's it ! Now, when you drag and drop an element, you can see what is happening.
+That's it ! Now, when you drag and drop an element, you can see what is happening :
+![Sort and Drop preview](sad-debug.gif)
