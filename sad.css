@@ -1,0 +1,13 @@
+.sad-highlight .image{
+    filter:grayscale(1);
+}
+.sad-selected {
+    background:rgba(0,0,255, 0.5);
+}
+.sad-placeholder {
+    background:orange;
+}
+.sad-select-placeholder {
+    background:rgba(255, 174, 0, 0.626);
+    border:1px solid orange;
+}

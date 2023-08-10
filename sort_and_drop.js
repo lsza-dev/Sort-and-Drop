@@ -198,7 +198,6 @@ class SortAndDrop {
                 this.to.onDrop({...this});
             } else { // SORT
                 const canSort = (el) => {
-                    debugger;
                     return !this.to.accept || [...el.parentNode.querySelectorAll(this.to.accept)].includes(el);
                 }
                 if(this.beforeSort) this.beforeSort({...this});
@@ -615,3 +614,4 @@ class SortAndDrop {
         }
     }
 }
+export { SortAndDrop };

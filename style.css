@@ -1,0 +1,49 @@
+html, body {
+    font-family: monospace;
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100%;
+}
+
+.list {
+    overflow:auto;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    user-select: none;
+}
+.list.items {
+    flex:1;
+    display:flex;
+    height: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.item {
+    width:fit-content;
+    border:1px solid lightgrey;
+    border-radius: 1em;
+    text-align:center;
+    margin:0.5em;
+    background-color: white;
+}
+
+.item .image {
+    aspect-ratio:1;
+    width:128px;
+    background-color:lightblue;
+    margin:0.5em;
+    border-radius:0.5em;
+}
+.item.folder .image {
+    background-color:tomato;
+}
+
+.item .title {
+    white-space: wrap;
+    margin:0.5em 0;
+}
