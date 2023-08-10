@@ -50,25 +50,41 @@ In this case, it will result on a list of folders and files sortable and selecta
 ### Options
 ```js
 const sortable = new SortAndDrop(el, {
+    // Query of elements who accept a drop of other elements
     droppable:'.folder',
-      // Query of elements who accept a drop of other elements
 
+    // Default "column". Can be "column" or "row"
     direction:"column",
-      // Default "column". Can be "column" or "row"
 
+    // Query of elements who can be placed into the list from an other
     accept:".folder, .file",
-      // Query of elements who can be placed into the list from an other
 
+    // Query of parent element who is use to trigger the selectable rectangle
     selectArea:"body",
-      // Query of parent element who is use to trigger the selectable rectangle
 
+    // Function to be executed when a sortable is made
     onSort:function(sort) { console.log(sort); },
-      // Function to be executed when a sortable is made
 
+    // Function to be executed when a droppable is made
     onDrop:function(sort) { console.log(sort); }
-      // Function to be executed when a droppable is made
 });
 ```
+### Style
+The class add four classes :
+```css
+/* Added to the item behind the gragged item if it accept drop */
+.sad-highlight {}
+
+/* Added to all elements selected */
+.sad-selected {}
+
+/* The class for the placeholder when dragging an element */
+.sad-placeholder {}
+
+/* The class of the selectable rectangle */
+.sad-select-placeholder {}
+```
+No default style is provided. So, be sure to add it by your self !
 ### Debug mode
 The class have a debug mode to see what's happening in real time. To enable it, set the "debug" property to true :
 ```js
