@@ -56,8 +56,8 @@ const sortable = new SortAndDrop(el, {
     // Query of elements who accept a drop of other elements
     droppable:'.folder',
 
-    // Default "column". Can be "column" or "row"
-    direction:"column",
+    // Default "row". Can be "column" or "row". The direction of the list
+    direction:"row",
 
     // Query of elements who can be placed into the list from an other
     accept:".folder, .file",
@@ -66,10 +66,28 @@ const sortable = new SortAndDrop(el, {
     selectArea:"body",
 
     // Function to be executed when a sortable is made
-    onSort:function(sort) { console.log(sort); },
+    onSort:function(evt) {
+      evt.cursorX; // Position X of the cursor
+      evt.cursorY; // Position Y of the cursor
+      evt.downLeft; // Left position of the cursor when has down
+      evt.downTop; // Top position of the cursor when has down
+      evt.downTimestamp; // Timestamp of the mousedown event trigger
+      evt.drop; // True or false, define if it's an drop event
+      evt.relatedElement; // The element who have been draged
+      evt.relatedRect; // The rectangle of the relatedElement
+      evt.scrollableElement; // The parent element who is scrollable
+      evt.selectableArea; // The HTMLnode element who is the area for trigger the selecting mode
+      evt.selected; // Nodelist of elements who are selected
+      evt.sort; // Can be 1, -1 or null. It representing the direction of the sorting relative to the evt.targetElement. For drop, the value is null
+      evt.targetElement; // The element used for the dropping or sorting
+      evt.targetRect; // The rectangle of the relatedElement
+      evt.to; // The instance of SortAndDrop concerned (for multiple lists)
+    },
 
     // Function to be executed when a droppable is made
-    onDrop:function(sort) { console.log(sort); }
+    onDrop:function(evt) {
+      // evt is the same as onSort
+    }
 });
 ```
 ### Style
@@ -93,5 +111,5 @@ The class have a debug mode to see what's happening in real time. To enable it, 
 ```js
 SortAndDrop.debug = true;
 ```
-That's it ! Now, when you drag and drop an element, you can see what is happening :
-![Sort and Drop preview](sad-debug.gif)
+That's it ! Now, when you drag an element, you can see what is happening :
+![Sort and Drop debug preview](sad-debug.gif)
