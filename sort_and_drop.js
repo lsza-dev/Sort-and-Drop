@@ -233,7 +233,7 @@ class SortAndDrop {
         this.#StopSorting(e);
     }
 
-    #StopSorting(e) {
+    #StopSorting() {
         if(this.ghost) this.ghost.parentNode.removeChild(this.ghost);
         if(this.placeholder) this.placeholder.parentNode.removeChild(this.placeholder);
         if(this.debug) this.debug.parentNode.removeChild(this.debug);
@@ -246,7 +246,7 @@ class SortAndDrop {
         this.targetElement = null;
         this.to = null;
         clearTimeout(this.selectedTimeout);
-        this.#Out(e);
+        this.#Out();
     }
 
     #Enter(e) { // MOUSE ENTER OR TOUCH ENTER
@@ -277,7 +277,7 @@ class SortAndDrop {
         else this.drop = true;
         this.#HandlePlaceholder();
     }
-    #Out(e) {
+    #Out() {
         [...this.from.children].forEach(el => el.classList.remove("sad-highlight"));
         if(this.targetElement) {
             this.targetElement.classList.remove("sad-highlight");
@@ -329,8 +329,8 @@ class SortAndDrop {
             else if(!e.ctrlKey) this.#UnselectItem(el);
         });
     }
-    #SelectEnd(e) {
-        if(this.selectPlaceholder.parentNode)
+    #SelectEnd() {
+        if(this.selectPlaceholder && this.selectPlaceholder.parentNode)
             this.selectPlaceholder.parentNode.removeChild(this.selectPlaceholder);
         delete this.selectPlaceholder;
         delete this.selecting;
@@ -511,6 +511,12 @@ class SortAndDrop {
         }
         return document.body;
     }
+
+    cancel() {
+        this.#SelectEnd();
+        this.#StopSorting();
+    }
+
     // DEBUG
     #Debug() {
         if(!SortAndDrop.debug) return;
