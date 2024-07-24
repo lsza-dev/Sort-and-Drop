@@ -66,15 +66,17 @@ class SortAndDrop {
             }, {passive:false});
         });
         [...list.children].forEach(el => el.classList.add("sad-item"));
-        list.addEventListener("DOMNodeInserted", (e) => {
-            if(![...list.children].includes(e.target)) return;
-            e.target.classList.add("sad-item");
+        const observer = new MutationObserver((mutations) => {
+            for(let mutation of mutations) {
+                if(mutation.type != "childList") continue;
+                mutation.addedNodes.forEach(el => el.classList.add("sad-item"));
+            }
             if(this.droppable) {
                 const elements = list.querySelectorAll(this.droppable);
                 [...elements].forEach(el => el.classList.add("sad-droppable"));
             }
-        });
-
+        })
+        observer.observe(list, { attributes: true, childList: true });
 
         if(this.droppable) {
             const elements = list.querySelectorAll(this.droppable);
